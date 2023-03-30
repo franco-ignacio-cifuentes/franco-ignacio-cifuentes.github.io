@@ -1,0 +1,47 @@
+<div style="text-align: center;">Thank you for taking our survey - and helping us serve you better.<br />
+<br />
+We appreciate the input!<br />
+<br />
+<style type="text/css">
+.exit-link {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	direction: inherit;
+	box-sizing: border-box;
+	font-family: Poppins,Arial,sans-serif;
+	border: none;
+	color: #fff !important;
+	padding: 8px 20px;
+	cursor: pointer;
+	margin: 0;
+	text-align: center;
+	text-decoration: none;
+	-webkit-appearance: none;
+	transition: background .3s;
+	background-color: #007ac0;
+	border-radius: 3px;
+	font-weight: 500;
+	font-size: 14.4px;
+}
+</style>
+
+<button class="exit-link" onclick="closeSurvey()">Return to AAA mobile app</button><br>
+<button class="exit-link" onclick="closeIframe()">Return to AAA mobile app</button>
+</div>
+
+
+<script>
+var targetWindow = window; 
+
+function closeSurvey() {
+	console.log('init close survey');
+	// In production, DO NOT use '*', use to target domain
+	targetWindow.postMessage('close-iframe','*'); //update * to the targetOrigin, should be the domain in which the recipient page resides (e.g., aaamobile://)
+	console.log('finish close survey');
+}
+
+ function closeIframe() {
+	console.log('init close survey 2');
+    window.parent.postMessage('close-iframe', '*');
+	console.log('finish close survey 2');
+}
+</script>
